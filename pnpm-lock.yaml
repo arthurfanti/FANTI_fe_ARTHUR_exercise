@@ -46,6 +46,9 @@ dependencies:
     version: 2.1.4
 
 devDependencies:
+  '@types/testing-library__jest-dom':
+    specifier: ^5.14.6
+    version: 5.14.6
   '@typescript-eslint/eslint-plugin':
     specifier: ^5.48.1
     version: 5.48.1(@typescript-eslint/parser@5.48.1)(eslint@8.31.0)(typescript@4.9.4)
@@ -2563,7 +2566,6 @@ packages:
     dependencies:
       jest-matcher-utils: 27.5.1
       pretty-format: 27.5.1
-    dev: false
 
   /@types/json-schema@7.0.12:
     resolution: {integrity: sha512-Hr5Jfhc9eYOQNPYO5WLDq/n4jqijdHNlDXjuAQkkt+mWdQR+XJToOHrsD4cPaMXpn6KO7y2+wM8AZEs8VpBLVA==}
@@ -2670,7 +2672,6 @@ packages:
     resolution: {integrity: sha512-FkHXCb+ikSoUP4Y4rOslzTdX5sqYwMxfefKh1GmZ8ce1GOkEHntSp6b5cGadmNfp5e4BMEWOMx+WSKd5/MqlDA==}
     dependencies:
       '@types/jest': 27.5.2
-    dev: false
 
   /@types/trusted-types@2.0.3:
     resolution: {integrity: sha512-NfQ4gyz38SL8sDNrSixxU2Os1a5xcdFxipAFxYEuLUlvU2uDwS4NUpsImcf1//SlWItCVMMLiylsxbmNMToV/g==}
