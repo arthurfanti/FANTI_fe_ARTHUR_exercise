@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {Team} from 'types';
+import {NormalizeTeamList} from 'utils';
 import {getTeams as fetchTeams} from '../api';
 import Header from '../components/Header';
 import List from '../components/List';
 import {Container} from '../components/GlobalComponents';
-import {NormalizeTeamList} from 'utils';
 
 const Teams = () => {
     const [teams, setTeams] = React.useState<Team[]>([]);
