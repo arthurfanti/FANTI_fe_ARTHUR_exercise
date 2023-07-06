@@ -1,30 +1,14 @@
 import * as React from 'react';
-import {ListItem, Teams as TeamsList} from 'types';
+import {Team} from 'types';
 import {getTeams as fetchTeams} from '../api';
 import Header from '../components/Header';
 import List from '../components/List';
 import {Container} from '../components/GlobalComponents';
-
-const MapT = (teams: TeamsList[]) => {
-    return teams.map(team => {
-        const columns = [
-            {
-                key: 'Name',
-                value: team.name,
-            },
-        ];
-        return {
-            id: team.id,
-            url: `/team/${team.id}`,
-            columns,
-            navigationProps: team,
-        } as ListItem;
-    });
-};
+import {NormalizeTeamList} from 'utils';
 
 const Teams = () => {
-    const [teams, setTeams] = React.useState<any>([]); // Team type
-    const [isLoading, setIsLoading] = React.useState<any>(true); // boolean
+    const [teams, setTeams] = React.useState<Team[]>([]);
+    const [isLoading, setIsLoading] = React.useState<boolean>(true);
 
     React.useEffect(() => {
         const getTeams = async () => {
@@ -38,7 +22,7 @@ const Teams = () => {
     return (
         <Container>
             <Header title="Teams" showBackButton={false} />
-            <List items={MapT(teams)} isLoading={isLoading} />
+            <List items={NormalizeTeamList(teams)} isLoading={isLoading} />
         </Container>
     );
 };

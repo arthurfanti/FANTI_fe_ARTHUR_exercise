@@ -1,38 +1,14 @@
 import * as React from 'react';
 import {useLocation, useParams} from 'react-router-dom';
-import {ListItem, UserData} from 'types';
+import {UserData} from 'types';
+import {normalizeUserList} from 'utils';
 import {getTeamOverview, getUserData} from '../api';
 import Card from '../components/Card';
 import {Container} from '../components/GlobalComponents';
 import Header from '../components/Header';
 import List from '../components/List';
 
-const mapArray = (users: UserData[]) => {
-    return users.map(u => {
-        const columns = [
-            {
-                key: 'Name',
-                value: `${u.firstName} ${u.lastName}`,
-            },
-            {
-                key: 'Display Name',
-                value: u.displayName,
-            },
-            {
-                key: 'Location',
-                value: u.location,
-            },
-        ];
-        return {
-            id: u.id,
-            url: `/user/${u.id}`,
-            columns,
-            navigationProps: u,
-        };
-    }) as ListItem[];
-};
-
-const mapTLead = tlead => {
+const renderTeamLeader = (tlead: UserData) => {
     const columns = [
         {
             key: 'Team Lead',
@@ -89,8 +65,8 @@ const TeamOverview = () => {
     return (
         <Container>
             <Header title={`Team ${location.state.name}`} />
-            {!isLoading && mapTLead(pageData.teamLead)}
-            <List items={mapArray(pageData?.teamMembers ?? [])} isLoading={isLoading} />
+            {!isLoading && renderTeamLeader(pageData.teamLead)}
+            <List items={normalizeUserList(pageData?.teamMembers ?? [])} isLoading={isLoading} />
         </Container>
     );
 };
