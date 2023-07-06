@@ -1,7 +1,7 @@
 import React from 'react';
 import {fireEvent, render} from '@testing-library/react';
-import List from '..';
 import {ListItem} from 'types';
+import List from '..';
 
 jest.mock('react-router-dom', () => ({
     ...(jest.requireActual('react-router-dom') as any),

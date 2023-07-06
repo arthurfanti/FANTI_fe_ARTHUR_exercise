@@ -2,7 +2,7 @@ import * as React from 'react';
 import {ListItem} from 'types';
 import Card from '../Card';
 import {Spinner} from '../Spinner';
-import {Container, SearchForm} from './styles';
+import {ListContainer, SearchForm} from './styles';
 
 interface Props {
     items?: ListItem[];
@@ -29,11 +29,11 @@ const List = ({items, hasNavigation = true, isLoading}: Props) => {
     }, [items]);
 
     return isLoading ? (
-        <Container>
+        <ListContainer>
             <Spinner />
-        </Container>
+        </ListContainer>
     ) : (
-        <Container>
+        <ListContainer>
             <SearchForm onSubmit={handleSubmit}>
                 <input
                     aria-label="search"
@@ -42,7 +42,7 @@ const List = ({items, hasNavigation = true, isLoading}: Props) => {
                     ref={inputRef}
                 />
             </SearchForm>
-            <Container>
+            <ListContainer>
                 {filteredItems.map(({url, id, columns, navigationProps}, index) => {
                     return (
                         <Card
@@ -55,8 +55,8 @@ const List = ({items, hasNavigation = true, isLoading}: Props) => {
                         />
                     );
                 })}
-            </Container>
-        </Container>
+            </ListContainer>
+        </ListContainer>
     );
 };
 
