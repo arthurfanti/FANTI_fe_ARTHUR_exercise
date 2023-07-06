@@ -51,7 +51,9 @@ var mapTLead = tlead => {
             value: tlead.location,
         },
     ];
-    return <Card columns={columns} url={`/user/${tlead.id}`} navigationProps={tlead} />;
+    return (
+        <Card id={tlead.id} columns={columns} url={`/user/${tlead.id}`} navigationProps={tlead} />
+    );
 };
 
 interface PageState {
@@ -71,7 +73,7 @@ const TeamOverview = () => {
             const teamLead = await getUserData(teamLeadId);
 
             const teamMembers = [];
-            for(var teamMemberId of teamMemberIds) {
+            for (var teamMemberId of teamMemberIds) {
                 const data = await getUserData(teamMemberId);
                 teamMembers.push(data);
             }
