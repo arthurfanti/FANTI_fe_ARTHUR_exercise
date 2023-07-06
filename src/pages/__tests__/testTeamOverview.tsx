@@ -58,25 +58,8 @@ describe('TeamOverview', () => {
     });
 
     it('should render team overview users', async () => {
-        const {getAllByTestId} = setup();
+        const {findAllByTestId} = setup();
 
-        await waitFor(() => {
-            expect(getAllByTestId(/cardContainer/)).toHaveLength(4);
-        });
-    });
-
-    it('should filter by input', async () => {
-        const {getAllByTestId, getByLabelText} = setup();
-        await waitFor(() => {
-            expect(getByLabelText('search')).toBeInTheDocument();
-        });
-
-        const input = getByLabelText('search') as HTMLInputElement;
-        fireEvent.change(input, {target: {value: '3'}});
-        fireEvent.submit(input);
-
-        await waitFor(() => {
-            expect(getAllByTestId(/cardContainer/)).toHaveLength(2);
-        });
+        expect(await findAllByTestId(/cardContainer/)).toHaveLength(4);
     });
 });

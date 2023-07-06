@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {render, screen, waitFor} from '@testing-library/react';
+import {render, screen, waitFor, waitForElementToBeRemoved} from '@testing-library/react';
 import * as API from '../../api';
 import Teams from '../Teams';
 
@@ -54,11 +54,9 @@ describe('Teams', () => {
             },
         ]);
 
-        render(<Teams />);
+        const {findByText} = setup();
 
-        await waitFor(() => {
-            expect(screen.getByText('Team1')).toBeInTheDocument();
-        });
-        expect(screen.getByText('Team2')).toBeInTheDocument();
+        expect(await findByText('Team1')).toBeInTheDocument();
+        expect(await findByText('Team2')).toBeInTheDocument();
     });
 });
