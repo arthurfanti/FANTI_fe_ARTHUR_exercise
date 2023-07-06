@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {fireEvent, render, waitFor} from '@testing-library/react';
+import {render} from '@testing-library/react';
 import * as API from '../../api';
 import TeamOverview from '../TeamOverview';
 
@@ -40,9 +40,8 @@ const setup = () => {
 describe('TeamOverview', () => {
     beforeEach(() => {
         jest.spyOn(API, 'getTeamOverview').mockResolvedValue(teamOverview);
-        jest.spyOn(API, 'getUserData').mockImplementation(
-            userId =>
-                Promise.resolve({...userData, id: userId, displayName: `userData ${userId}`} as any)
+        jest.spyOn(API, 'getUserData').mockImplementation(userId =>
+            Promise.resolve({...userData, id: userId, displayName: `userData ${userId}`} as any)
         );
     });
     beforeAll(() => {

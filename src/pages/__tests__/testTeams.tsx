@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {render, screen, waitFor, waitForElementToBeRemoved} from '@testing-library/react';
+import {render, screen} from '@testing-library/react';
 import * as API from '../../api';
 import Teams from '../Teams';
 
