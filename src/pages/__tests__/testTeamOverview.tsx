@@ -42,7 +42,7 @@ describe('TeamOverview', () => {
         jest.spyOn(API, 'getTeamOverview').mockResolvedValue(teamOverview);
         jest.spyOn(API, 'getUserData').mockImplementation(
             userId =>
-                Promise.resolve({...userData, id: userId, displayName: `userData ${userId}`} as any) // append userId to displayName to enable filter test
+                Promise.resolve({...userData, id: userId, displayName: `userData ${userId}`} as any)
         );
     });
     beforeAll(() => {
