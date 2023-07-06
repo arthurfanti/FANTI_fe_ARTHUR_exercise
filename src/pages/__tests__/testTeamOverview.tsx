@@ -67,12 +67,13 @@ describe('TeamOverview', () => {
 
     it('should filter by input', async () => {
         const {getAllByTestId, getByLabelText} = setup();
-        let input = null;
         await waitFor(() => {
-            input = getByLabelText('search') as HTMLInputElement;
-            fireEvent.change(input, {target: {value: '3'}});
-            fireEvent.submit(input);
+            expect(getByLabelText('search'));
         });
+
+        const input = getByLabelText('search') as HTMLInputElement;
+        fireEvent.change(input, {target: {value: '3'}});
+        fireEvent.submit(input);
 
         await waitFor(() => {
             expect(getAllByTestId(/cardContainer/)).toHaveLength(2);
