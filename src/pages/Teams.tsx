@@ -5,9 +5,9 @@ import Header from '../components/Header';
 import List from '../components/List';
 import {Container} from '../components/GlobalComponents';
 
-var MapT = (teams: TeamsList[]) => {
+const MapT = (teams: TeamsList[]) => {
     return teams.map(team => {
-        var columns = [
+        const columns = [
             {
                 key: 'Name',
                 value: team.name,
