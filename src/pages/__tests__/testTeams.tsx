@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {fireEvent, render, screen, waitFor, act} from '@testing-library/react';
+import {render, screen, waitFor} from '@testing-library/react';
 import * as API from '../../api';
 import Teams from '../Teams';
 
@@ -15,6 +15,15 @@ jest.mock('react-router-dom', () => ({
     useNavigate: () => ({}),
 }));
 
+const setup = () => {
+    const utils = render(<Teams />);
+    const spinner = screen.getByTestId(/spinner/);
+    return {
+        spinner,
+        ...utils,
+    };
+};
+
 describe('Teams', () => {
     beforeAll(() => {
         jest.useFakeTimers();
@@ -29,7 +38,8 @@ describe('Teams', () => {
     });
 
     it('should render spinner while loading', async () => {
-        // TODO - Add code for this test
+        const {spinner} = setup();
+        expect(spinner).toBeInTheDocument();
     });
 
     it('should render teams list', async () => {

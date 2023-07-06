@@ -14,11 +14,13 @@ jest.mock('react-router-dom', () => ({
         teamId: '1',
     }),
 }));
+
 const teamOverview = {
     id: '1',
     teamLeadId: '2',
     teamMemberIds: ['3', '4', '5'],
 };
+
 const userData = {
     id: '2',
     firstName: 'userData',
