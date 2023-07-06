@@ -68,7 +68,7 @@ describe('TeamOverview', () => {
     it('should filter by input', async () => {
         const {getAllByTestId, getByLabelText} = setup();
         await waitFor(() => {
-            expect(getByLabelText('search'));
+            expect(getByLabelText('search')).toBeInTheDocument();
         });
 
         const input = getByLabelText('search') as HTMLInputElement;
