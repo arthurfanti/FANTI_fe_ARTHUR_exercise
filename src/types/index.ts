@@ -21,6 +21,7 @@ export interface UserData {
 export interface ListItemColumn {
     key: string;
     value: string;
+    [Symbol.iterator](): Iterator<string, string>;
 }
 
 export interface ListItem {
