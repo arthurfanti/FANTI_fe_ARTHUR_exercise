@@ -8,7 +8,7 @@ import {Container} from '../components/GlobalComponents';
 
 const Teams = () => {
     const [teams, setTeams] = React.useState<TeamData[]>([]);
-    const [isLoading, setIsLoading] = React.useState<boolean>(true);
+    const [isLoading, setIsLoading] = React.useState(true);
 
     React.useEffect(() => {
         const getTeams = async () => {
