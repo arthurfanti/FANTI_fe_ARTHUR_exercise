@@ -1,7 +1,8 @@
 import * as React from 'react';
-import {render, screen, waitFor} from '@testing-library/react';
+import {render} from '@testing-library/react';
 import * as API from '../../api';
 import TeamOverview from '../TeamOverview';
+import {UserData} from 'types';
 
 jest.mock('react-router-dom', () => ({
     useLocation: () => ({
@@ -9,13 +10,45 @@ jest.mock('react-router-dom', () => ({
             teamName: 'Some Team',
         },
     }),
-    useNavigate: () => ({}),
+    useNavigate: () => jest.fn(),
     useParams: () => ({
         teamId: '1',
     }),
 }));
 
+const teamOverview = {
+    id: '1',
+    teamLeadId: '2',
+    teamMemberIds: ['3', '4', '5'],
+};
+
+const userData = {
+    id: '2',
+    firstName: 'userData',
+    lastName: 'userData',
+    displayName: 'userData',
+    location: '',
+    avatar: '',
+};
+
+const setup = () => {
+    const utils = render(<TeamOverview />);
+    return {
+        ...utils,
+    };
+};
+
 describe('TeamOverview', () => {
+    beforeEach(() => {
+        jest.spyOn(API, 'getTeamOverview').mockResolvedValue(teamOverview);
+        jest.spyOn(API, 'getUserData').mockImplementation(userId =>
+            Promise.resolve({
+                ...userData,
+                id: userId,
+                displayName: `userData ${userId}`,
+            } as UserData)
+        );
+    });
     beforeAll(() => {
         jest.useFakeTimers();
     });
@@ -29,26 +62,8 @@ describe('TeamOverview', () => {
     });
 
     it('should render team overview users', async () => {
-        const teamOverview = {
-            id: '1',
-            teamLeadId: '2',
-            teamMemberIds: ['3', '4', '5'],
-        };
-        const userData = {
-            id: '2',
-            firstName: 'userData',
-            lastName: 'userData',
-            displayName: 'userData',
-            location: '',
-            avatar: '',
-        };
-        jest.spyOn(API, 'getTeamOverview').mockImplementationOnce(() => Promise.resolve({} as any));
-        jest.spyOn(API, 'getUserData').mockImplementationOnce(() => Promise.resolve({} as any));
+        const {findAllByTestId} = setup();
 
-        render(<TeamOverview />);
-
-        await waitFor(() => {
-            expect(screen.queryAllByText('userData')).toHaveLength(4);
-        });
+        expect(await findAllByTestId(/cardContainer/)).toHaveLength(4);
     });
 });

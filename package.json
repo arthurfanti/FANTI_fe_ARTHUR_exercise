@@ -26,7 +26,8 @@
     "prettier": "prettier --config ./.prettierrc.json --write './**/*.{js,tsx,ts}'",
     "prettier:check": "prettier --config ./.prettierrc.json --check './**/*.{js,tsx,ts}'",
     "lint:check": "eslint 'src/**/*.{js,tsx,ts}' --max-warnings=0 --cache --cache-location /tmp/eslint-cache.json && npm run tsc-check && npm run prettier:check",
-    "lint:fix": "eslint 'src/**/*.{js,tsx,ts}' --fix"
+    "lint:fix": "eslint 'src/**/*.{js,tsx,ts}' --fix",
+    "version": "auto-changelog -p && git add HISTORY.md"
   },
   "eslintConfig": {
     "extends": [
@@ -47,23 +48,32 @@
     ]
   },
   "devDependencies": {
+    "@types/styled-components": "^5.1.26",
+    "@types/testing-library__jest-dom": "^5.14.7",
     "@typescript-eslint/eslint-plugin": "^5.48.1",
     "@typescript-eslint/parser": "^5.48.1",
+    "auto-changelog": "^2.4.0",
     "eslint": "^8.31.0",
-    "eslint-plugin-import": "^2.27.4",
-    "eslint-plugin-n": "^15.6.1",
-    "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-react": "^7.32.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.6.0",
     "eslint-import-resolver-typescript": "^3.5.3",
+    "eslint-plugin-import": "^2.27.4",
     "eslint-plugin-jest": "^27.2.1",
     "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-n": "^15.6.1",
     "eslint-plugin-no-only-tests": "^3.1.0",
     "eslint-plugin-no-storage": "^1.0.2",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.32.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-testing-library": "^5.9.1",
     "prettier": "2.8.2",
     "typescript": "^4.9.4"
+  },
+  "auto-changelog": {
+    "output": "HISTORY.md",
+    "template": "keepachangelog",
+    "unreleased": true,
+    "commitLimit": false
   }
 }

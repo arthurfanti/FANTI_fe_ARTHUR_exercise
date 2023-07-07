@@ -24,7 +24,7 @@
       ],
       "plugins": ["@typescript-eslint"],
       "rules": {
-        "no-var": "off",
+        "no-var": ["error"],
         "no-unsafe-optional-chaining": 0,
         "react/jsx-no-useless-fragment": [2, {"allowExpressions": true}],
         "@typescript-eslint/no-explicit-any": 0,
@@ -118,7 +118,7 @@
         "commonjs": true
       }
     ],
-    "import/no-cycle": 0, // off by default, should be checked regularly
+    "import/no-cycle": 2, 
     "import/named": 0,
     "react/jsx-fragments": [1, "element"],
     "react/jsx-no-target-blank": 0,
@@ -135,13 +135,13 @@
     "react/no-unstable-nested-components": 0,
     "react/jsx-no-useless-fragment": [2, {"allowExpressions": true}],
     "react/jsx-no-constructed-context-values": 0,
-    "jsx-a11y/control-has-associated-label": 0,
-    "jsx-a11y/no-static-element-interactions": 0,
-    "jsx-a11y/click-events-have-key-events": 0,
-    "jsx-a11y/no-noninteractive-element-interactions": 0,
-    "jsx-a11y/anchor-is-valid": 0,
-    "jsx-a11y/mouse-events-have-key-events": 0,
-    "jsx-a11y/no-autofocus": 0,
+    "jsx-a11y/control-has-associated-label": 2,
+    "jsx-a11y/no-static-element-interactions": 2,
+    "jsx-a11y/click-events-have-key-events": 2,
+    "jsx-a11y/no-noninteractive-element-interactions": 2,
+    "jsx-a11y/anchor-is-valid": 2,
+    "jsx-a11y/mouse-events-have-key-events": 2,
+    "jsx-a11y/no-autofocus": 2,
     "no-only-tests/no-only-tests": 2,
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
