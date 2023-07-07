@@ -25,18 +25,6 @@ const setup = () => {
 };
 
 describe('Teams', () => {
-    beforeAll(() => {
-        jest.useFakeTimers();
-    });
-
-    afterEach(() => {
-        jest.clearAllTimers();
-    });
-
-    afterAll(() => {
-        jest.useRealTimers();
-    });
-
     it('should render spinner while loading', async () => {
         const {spinner} = setup();
         expect(spinner).toBeInTheDocument();
