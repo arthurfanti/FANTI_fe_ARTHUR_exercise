@@ -1,9 +1,9 @@
-export interface Team {
+export interface TeamData {
     id: string;
     name: string;
 }
 
-export interface TeamOverview {
+export interface TeamOverviewData {
     id: string;
     teamLeadId: string;
     teamMemberIds: string[];
@@ -21,12 +21,11 @@ export interface UserData {
 export interface ListItemColumn {
     key: string;
     value: string;
-    [Symbol.iterator](): Iterator<string, string>;
 }
 
 export interface ListItem {
     id: string;
     url?: string;
     columns: Array<ListItemColumn>;
-    navigationProps?: UserData | Team;
+    navigationProps?: UserData | TeamData;
 }

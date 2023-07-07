@@ -1,6 +1,48 @@
-import {ListItem, Team, UserData} from 'types';
+import {ListItem, ListItemColumn, TeamData, UserData} from 'types';
 
-export const NormalizeTeamList = (teams: Team[]) => {
+export const getUserColumns = (user: UserData): ListItemColumn[] => {
+    return [
+        {
+            key: 'Name',
+            value: `${user.firstName} ${user.lastName}`,
+        },
+        {
+            key: 'Display Name',
+            value: user.displayName,
+        },
+        {
+            key: 'Location',
+            value: user.location,
+        },
+    ];
+};
+
+export const getTeamLeaderColumns = (teamLeader: UserData): ListItemColumn[] => {
+    if (!teamLeader) {
+        return [];
+    }
+
+    return [
+        {
+            key: 'Team Lead',
+            value: '',
+        },
+        {
+            key: 'Name',
+            value: `${teamLeader.firstName} ${teamLeader.lastName}`,
+        },
+        {
+            key: 'Display Name',
+            value: teamLeader.displayName,
+        },
+        {
+            key: 'Location',
+            value: teamLeader.location,
+        },
+    ];
+};
+
+export const normalizeTeamList = (teams: TeamData[]): ListItem[] => {
     return teams.map(team => {
         const columns = [
             {
@@ -13,31 +55,19 @@ export const NormalizeTeamList = (teams: Team[]) => {
             url: `/team/${team.id}`,
             columns,
             navigationProps: team,
-        } as ListItem;
+        };
     });
 };
 
-export const normalizeUserList = (users: UserData[]) => {
-    return users.map(u => {
-        const columns = [
-            {
-                key: 'Name',
-                value: `${u.firstName} ${u.lastName}`,
-            },
-            {
-                key: 'Display Name',
-                value: u.displayName,
-            },
-            {
-                key: 'Location',
-                value: u.location,
-            },
-        ];
+export const normalizeUserList = (users: UserData[]): ListItem[] => {
+    return users.map(user => {
+        const columns = getUserColumns(user);
+
         return {
-            id: u.id,
-            url: `/user/${u.id}`,
+            id: user.id,
+            url: `/user/${user.id}`,
             columns,
-            navigationProps: u,
-        } as ListItem;
+            navigationProps: user,
+        };
     });
 };

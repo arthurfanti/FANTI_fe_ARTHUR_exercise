@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {useNavigate} from 'react-router-dom';
-import {Team, UserData} from 'types';
+import {TeamData, UserData} from 'types';
 import {CardContainer} from './styles';
 
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
         value: string;
     }>;
     hasNavigation?: boolean;
-    navigationProps?: UserData | Team;
+    navigationProps?: UserData | TeamData;
 }
 
 const Card = ({

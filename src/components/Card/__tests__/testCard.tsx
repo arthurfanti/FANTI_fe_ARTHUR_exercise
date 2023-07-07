@@ -1,6 +1,6 @@
 import React from 'react';
 import {fireEvent, render, screen} from '@testing-library/react';
-import {Team} from 'types';
+import {TeamData} from 'types';
 import Card from '..';
 
 const mockUseNavigate = jest.fn();
@@ -38,10 +38,10 @@ describe('Card', () => {
     });
 
     it('should navigate when card is clicked and navigation is enabled', () => {
-        const navProps = {
+        const navProps: TeamData = {
             id: '1',
             name: 'Team 1',
-        } as Team;
+        };
         render(
             <Card
                 columns={[{key: 'columnKey', value: 'columnValue'}]}

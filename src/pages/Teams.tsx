@@ -1,13 +1,13 @@
 import * as React from 'react';
-import {Team} from 'types';
-import {NormalizeTeamList} from 'utils';
+import {TeamData} from 'types';
+import {normalizeTeamList} from 'utils';
 import {getTeams as fetchTeams} from '../api';
 import Header from '../components/Header';
 import List from '../components/List';
 import {Container} from '../components/GlobalComponents';
 
 const Teams = () => {
-    const [teams, setTeams] = React.useState<Team[]>([]);
+    const [teams, setTeams] = React.useState<TeamData[]>([]);
     const [isLoading, setIsLoading] = React.useState<boolean>(true);
 
     React.useEffect(() => {
@@ -22,7 +22,7 @@ const Teams = () => {
     return (
         <Container>
             <Header title="Teams" showBackButton={false} />
-            <List items={NormalizeTeamList(teams)} isLoading={isLoading} />
+            <List items={normalizeTeamList(teams)} isLoading={isLoading} />
         </Container>
     );
 };
