@@ -12,6 +12,7 @@ from {
 export const SpinnerBody = styled.div`
     height: 4rem;
     width: 4rem;
+    margin: 0 auto;
     border: 4px solid #d1d5db;
     border-top-color: #3b82f6;
     border-radius: 50%;

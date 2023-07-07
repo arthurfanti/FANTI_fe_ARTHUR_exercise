@@ -19,5 +19,13 @@ export const SearchForm = styled.form`
         display: flex;
         box-sizing: border-box;
         padding: 1rem;
+        border: 1px solid lightgray;
+        border-radius: 12px;
+        font-weight: 700;
+        transition: box-shadow 0.2s ease-out;
+        &:focus {
+            box-shadow: 0 0 0 2px darkblue;
+            border-color: transparent;
+        }
     }
 `;
