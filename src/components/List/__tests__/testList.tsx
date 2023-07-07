@@ -17,7 +17,7 @@ const setup = (jsx: JSX.Element) => {
 
 describe('List', () => {
     it('should render spinner and not render items when it is loading', () => {
-        const items = [
+        const items: ListItem[] = [
             {
                 id: '1',
                 columns: [
@@ -27,7 +27,7 @@ describe('List', () => {
                     },
                 ],
             },
-        ] as ListItem[];
+        ];
 
         const {getByTestId, queryByTestId} = setup(<List isLoading items={items} />);
 
@@ -36,7 +36,7 @@ describe('List', () => {
     });
 
     it('should not render spinner and render items when it is not loading', () => {
-        const items = [
+        const items: ListItem[] = [
             {
                 id: '1',
                 columns: [
@@ -46,7 +46,7 @@ describe('List', () => {
                     },
                 ],
             },
-        ] as ListItem[];
+        ];
 
         const {getByTestId, queryByTestId} = setup(<List isLoading={false} items={items} />);
 
@@ -55,7 +55,7 @@ describe('List', () => {
     });
 
     it('should render multiple card when multiple items', () => {
-        const items = [
+        const items: ListItem[] = [
             {
                 id: '1',
                 columns: [
@@ -74,7 +74,7 @@ describe('List', () => {
                     },
                 ],
             },
-        ] as ListItem[];
+        ];
 
         const {getByTestId} = setup(<List isLoading={false} items={items} />);
 
@@ -83,7 +83,7 @@ describe('List', () => {
     });
 
     it('should filter cards based on search input', () => {
-        const items = [
+        const items: ListItem[] = [
             {
                 id: '1',
                 columns: [
@@ -102,7 +102,7 @@ describe('List', () => {
                     },
                 ],
             },
-        ] as ListItem[];
+        ];
 
         const {getAllByTestId, getByTestId, getByLabelText} = setup(
             <List isLoading={false} items={items} />
