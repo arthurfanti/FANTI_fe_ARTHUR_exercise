@@ -2,6 +2,7 @@ import * as React from 'react';
 import {render} from '@testing-library/react';
 import * as API from '../../api';
 import TeamOverview from '../TeamOverview';
+import {UserData} from 'types';
 
 jest.mock('react-router-dom', () => ({
     useLocation: () => ({
@@ -41,7 +42,11 @@ describe('TeamOverview', () => {
     beforeEach(() => {
         jest.spyOn(API, 'getTeamOverview').mockResolvedValue(teamOverview);
         jest.spyOn(API, 'getUserData').mockImplementation(userId =>
-            Promise.resolve({...userData, id: userId, displayName: `userData ${userId}`} as any)
+            Promise.resolve({
+                ...userData,
+                id: userId,
+                displayName: `userData ${userId}`,
+            } as UserData)
         );
     });
     beforeAll(() => {
